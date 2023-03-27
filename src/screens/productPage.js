@@ -64,11 +64,19 @@ const ProductPage = () => {
                     <ThirdTab product={product} />
                     )
                     )}
-                    <div style={{flexDirection:'row', marginLeft:'50%'}}>
-                        <button style={{backgroundColor:'white', border:0, color: tab==1 ? 'grey' : ''}} onClick={() => setTab((prevTab) => (prevTab)>1 ? prevTab-1 : prevTab)}><KeyboardArrowLeftIcon /></button>
-                        <button style={{backgroundColor:'white', border:0, color: tab==3 ? 'grey' : ''}} onClick={() => setTab((prevTab) => (prevTab)<3 ? prevTab+1 : prevTab)}><KeyboardArrowRightIcon /></button>
-                    </div>
                 </div> 
+                <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                    <button style={{backgroundColor:'white', border:0, color: tab==1 ? 'grey' : '', marginRight:30}} onClick={() => setTab((prevTab) => (prevTab)>1 ? prevTab-1 : prevTab)}><KeyboardArrowLeftIcon /></button>
+                    {tab===1 ? <CurrentTabCircle /> : <NotCurrentTabCircle />}
+                    {tab===2 ? <CurrentTabCircle /> : <NotCurrentTabCircle />}
+                    {tab===3 ? <CurrentTabCircle /> : <NotCurrentTabCircle />}
+                    <button style={{backgroundColor:'white', border:0, color: tab==3 ? 'grey' : '', marginLeft:30}} onClick={() => setTab((prevTab) => (prevTab)<3 ? prevTab+1 : prevTab)}><KeyboardArrowRightIcon /></button>
+                </div>
+                <div style={{display:'flex', justifyContent:'center', color:'grey', fontSize:'small'}}>
+                    {tab===1 ? 'Unitary impact' : 
+                    (tab===2) ? 'Impact equivalences' :
+                    'Unitary benchmark'}
+                </div>
             </div>
         </div>
     )
@@ -127,6 +135,37 @@ const ThirdTab = ({ product }) =>{
         <div>Eq.</div>
         <div>Eq.</div>
         </>
+    )
+}
+
+
+const CurrentTabCircle = () =>{
+    return (
+        <div style={{
+            height:8,
+            width:8,
+            borderRadius:200,
+            backgroundColor:'black',
+            marginBottom:4,
+            marginLeft:8,
+            marginRight:8
+        }}>
+        </div>
+    )
+}
+
+const NotCurrentTabCircle = () =>{
+    return (
+        <div style={{
+            height:8,
+            width:8,
+            borderRadius:200,
+            backgroundColor:'grey',
+            marginBottom:4,
+            marginLeft:8,
+            marginRight:8
+        }}>
+        </div>
     )
 }
 export default ProductPage;
