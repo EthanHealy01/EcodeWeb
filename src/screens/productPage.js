@@ -48,23 +48,23 @@ const ProductPage = () => {
             </div>
             </div>     
                 <div style={{flexDirection:'column'}}>       
-                <div>{product.red_id}</div>
-                <div>{product.product_name}</div>
-                <div>{product.seller}</div>
-                {tab === 1 ? (
+                    <div>{product.red_id}</div>
+                    <div>{product.product_name}</div>
+                    <div>{product.seller}</div>
+                    {tab === 1 ? (
                     <FirstTab product={product} />
-                ) : (
-                tab===2 ? (
-                <SecondTab product={product} />
-                ):(
-                <ThirdTab product={product} />
-                )
-                )}
-                <div style={{flexDirection:'row'}}>
-                    <button onClick={() => setTab(1)}>1</button>
-                    <button onClick={() => setTab(2)}>2</button>
-                    <button onClick={() => setTab(3)}>3</button>
-                </div>
+                    ) : (
+                    tab===2 ? (
+                    <SecondTab product={product} />
+                    ):(
+                    <ThirdTab product={product} />
+                    )
+                    )}
+                    <div style={{flexDirection:'row'}}>
+                        <button onClick={() => setTab(1)}>1</button>
+                        <button onClick={() => setTab(2)}>2</button>
+                        <button onClick={() => setTab(3)}>3</button>
+                    </div>
                 </div> 
         </div>
         </div>
