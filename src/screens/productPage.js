@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import '../productPage.css';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const ProductPage = () => {
 
@@ -51,6 +54,7 @@ const ProductPage = () => {
                     <div>{product.red_id}</div>
                     <div>{product.product_name}</div>
                     <div>{product.seller}</div>
+                    <div style={{marginBottom:50}}></div>
                     {tab === 1 ? (
                     <FirstTab product={product} />
                     ) : (
@@ -60,36 +64,58 @@ const ProductPage = () => {
                     <ThirdTab product={product} />
                     )
                     )}
-                    <div style={{flexDirection:'row'}}>
-                        <button onClick={() => setTab((prevTab) => (prevTab)>1 ? prevTab-1 : prevTab)}>{"<-"}</button>
-                        <button onClick={() => setTab((prevTab) => (prevTab)<3 ? prevTab+1 : prevTab)}>{"->"}</button>
+                    <div style={{flexDirection:'row', marginLeft:'50%'}}>
+                        <button style={{backgroundColor:'white', border:0, color: tab==1 ? 'grey' : ''}} onClick={() => setTab((prevTab) => (prevTab)>1 ? prevTab-1 : prevTab)}><KeyboardArrowLeftIcon /></button>
+                        <button style={{backgroundColor:'white', border:0, color: tab==3 ? 'grey' : ''}} onClick={() => setTab((prevTab) => (prevTab)<3 ? prevTab+1 : prevTab)}><KeyboardArrowRightIcon /></button>
                     </div>
                 </div> 
+            </div>
         </div>
-        </div>
-        
-
     )
 }  
 
 const FirstTab = ({ product }) =>{
     return (
-        <>
-        <div>{product.water_consumed} water consumed</div>
-        <div>{product.co2_emiited} co2 emitted</div>
-        <div>{product.phosphates_emmitted} g phosphate eq emitted</div>
-        <div>{product.mj_consumed} mj consumed</div>
-        </>
+        <div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.water_consumed}</div> m<sup>3</sup> water eq consumed</div>
+                <div style={{color:'#494853', padding:2}}>Water scarcity impact</div>
+            </div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.co2_emiited}</div> kg CO<sub>2</sub> eq emitted</div>
+                <div style={{color:'#494853', padding:2}}>Global warming impact</div>
+            </div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.phosphates_emmitted}</div> g phosphate eq emitted</div>
+                <div style={{color:'#494853', padding:2}}>Eutrophication impact</div>
+            </div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.mj_consumed}</div> MJ consumed</div>
+                <div style={{color:'#494853', padding:2}}>Abiotic depletion impact</div>
+            </div>
+        </div>
     )
 }
 const SecondTab = ({ product }) =>{
     return (
-        <>
-        <div>{product.bottles} bottles</div>
-        <div>{product.days_bulb_on} day(s) a bulb is on</div>
-        <div>{product.washing_cycles} washing cycls</div>
-        <div>{product.km_driven} driven km</div>
-        </>
+        <div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.bottles}</div> bottle(s)</div>
+                <div style={{color:'#494853', padding:2}}>Water scarcity impact</div>
+            </div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.days_bulb_on}</div> day(s) a bulb is on</div>
+                <div style={{color:'#494853', padding:2}}>Global warming impact</div>
+            </div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.washing_cycles}</div> washing cycle(s)</div>
+                <div style={{color:'#494853', padding:2}}>Eutrophication impact</div>
+            </div>
+            <div className='row_item'>
+                <div style={{padding:2}}><div style={{color:'black', display:'inline-block'}}>{product.km_driven}</div> driven km</div>
+                <div style={{color:'#494853', padding:2}}>Abiotic depletion impact</div>
+            </div>
+        </div>
     )
 }
 const ThirdTab = ({ product }) =>{
