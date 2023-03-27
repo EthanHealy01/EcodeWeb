@@ -61,9 +61,8 @@ const ProductPage = () => {
                     )
                     )}
                     <div style={{flexDirection:'row'}}>
-                        <button onClick={() => setTab(1)}>1</button>
-                        <button onClick={() => setTab(2)}>2</button>
-                        <button onClick={() => setTab(3)}>3</button>
+                        <button onClick={() => setTab((prevTab) => (prevTab)>1 ? prevTab-1 : prevTab)}>{"<-"}</button>
+                        <button onClick={() => setTab((prevTab) => (prevTab)<3 ? prevTab+1 : prevTab)}>{"->"}</button>
                     </div>
                 </div> 
         </div>
@@ -97,7 +96,10 @@ const ThirdTab = ({ product }) =>{
     return (
         // Come back to for maths equations
         <>
-        <div>Maths</div>
+        <div>Eq.</div>
+        <div>Eq.</div>
+        <div>Eq.</div>
+        <div>Eq.</div>
         </>
     )
 }
